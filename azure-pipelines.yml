@@ -9,9 +9,8 @@ resources:
   repositories:
     - repository: rust_pipelines
       type: github
-      name: xoac/rust-azure-pipelines
-      # ref: refs/tags/v0.1.0
-      # endpoint: PipelinesTemplates # TODO YOU NEED TO CHANGE THIS!
+      name: ctaggart/rust-azure-pipelines
+      endpoint: github.com_ctaggart
 
 stages:
 - stage: check
