@@ -1,20 +1,27 @@
 trigger:
   branches:
-    include: ['*']
+    include: ["*"]
   tags:
-    include: ['*']
+    include: ["*"]
 
 # https://github.com/xoac/rust-azure-pipelines
 resources:
   repositories:
     - repository: rust_pipelines
       type: github
-      name: xoac/rust-azure-pipelines
-      # ref: refs/tags/v0.1.0
-      # endpoint: PipelinesTemplates # TODO YOU NEED TO CHANGE THIS!
+      name: ctaggart/rust-azure-pipelines
+      endpoint: github.com_ctaggart
 
 stages:
-- stage: check
-  displayName: "Quick checks"
-  jobs:
-  - template: ci/scenarios/check.yml@rust_pipelines
+  - stage: check
+    displayName: "Quick checks"
+    jobs:
+      # - template: ci/scenarios/check.yml@rust_pipelines
+      - job: Linux
+        pool:
+          vmImage: "ubuntu-20.04"
+        steps:
+          - script: echo "A"
+          - template: ci/steps/install-rust.yml@rust_pipelines
+          - script: cargo buid
+          - script: cargo run -- a b c
