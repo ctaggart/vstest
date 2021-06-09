@@ -12,12 +12,6 @@ resources:
       name: ctaggart/rust-azure-pipelines
       endpoint: github.com_ctaggart
 
-# stages:
-#   - stage: check
-#     displayName: "Build"
-#     jobs:
-#       - job: Linux
-
 pool:
   vmImage: "ubuntu-20.04"
 steps:
@@ -25,4 +19,6 @@ steps:
   - template: ci/steps/install-rust.yml@rust_pipelines
   - script: cargo build --release
   - script: cargo run -- a b c
+  - script: echo $PWD
+  - script: ls target/
   - script: $(Agent.BuildDirectory)/target/release/vstest d e f
