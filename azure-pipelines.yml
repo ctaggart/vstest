@@ -25,3 +25,4 @@ steps:
     inputs:
       vstestLocationMethod: location
       vstestLocation: $(Build.Repository.LocalPath)\target\release\vstest.exe
+      diagnosticsEnabled: true
