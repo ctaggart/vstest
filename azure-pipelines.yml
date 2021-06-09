@@ -24,4 +24,4 @@ steps:
   - task: VSTest@2
     inputs:
       vstestLocationMethod: location
-      vstestLocation: $(Build.Repository.LocalPath)/target/release/vstest
+      vstestLocation: $(Build.Repository.LocalPath)\target\release\vstest.exe
