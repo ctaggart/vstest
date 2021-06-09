@@ -23,4 +23,5 @@ steps:
   # - script: $(Build.Repository.LocalPath)/target/release/vstest d e f
   - task: VSTest@2
     inputs:
+      vstestLocationMethod: location
       vstestLocation: $(Build.Repository.LocalPath)/target/release/vstest
