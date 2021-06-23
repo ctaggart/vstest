@@ -32,6 +32,7 @@ stages:
           - script: cargo run -- a b c
           # - script: $(Build.Repository.LocalPath)/target/release/vstest d e f
           - pwsh: mv .\target\release\vstest.exe .\target\release\vstest.console.exe
+          - pwsh: New-Item -ItemType file test.dll
           - task: VSTest@2
             inputs:
               vstestLocationMethod: location
