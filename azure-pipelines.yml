@@ -38,3 +38,7 @@ stages:
               vstestLocationMethod: location
               vstestLocation: $(Build.Repository.LocalPath)\target\release
               diagnosticsEnabled: true
+            continueOnError: true
+          - pwsh: |
+              $json=ls D:\a\_temp\input_*.json
+              cat $json
