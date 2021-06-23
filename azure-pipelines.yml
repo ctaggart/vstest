@@ -31,8 +31,9 @@ stages:
           - script: cargo build --release
           - script: cargo run -- a b c
           # - script: $(Build.Repository.LocalPath)/target/release/vstest d e f
+          - pwsh: mv .\target\release\vstest.exe .\target\release\vstest.console.exe
           - task: VSTest@2
             inputs:
               vstestLocationMethod: location
-              vstestLocation: $(Build.Repository.LocalPath)\target\release\vstest.exe
+              vstestLocation: $(Build.Repository.LocalPath)\target\release
               diagnosticsEnabled: true
