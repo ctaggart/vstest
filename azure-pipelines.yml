@@ -26,21 +26,21 @@ stages:
             value: true
 
         steps:
-          - script: echo "A"
-          - template: ci/steps/install-rust.yml@rust_pipelines
-          - script: cargo build --release
-          - script: cargo run -- a b c
-          # - script: $(Build.Repository.LocalPath)/target/release/vstest d e f
-          - pwsh: mv .\target\release\vstest.exe .\target\release\vstest.console.exe
-          - pwsh: New-Item -ItemType file test.dll
-          - task: VSTest@2
-            inputs:
-              vstestLocationMethod: location
-              vstestLocation: $(Build.Repository.LocalPath)\target\release
-              diagnosticsEnabled: true
-            continueOnError: true
-          - pwsh: |
-              $json=ls D:\a\_temp\input_*.json
-              cat $json
-              cp $json $(Build.ArtifactStagingDirectory)
-          - task: PublishBuildArtifacts@1
+          - pwsh: "ls env:"
+          # - template: ci/steps/install-rust.yml@rust_pipelines
+          # - script: cargo build --release
+          # - script: cargo run -- a b c
+          # # - script: $(Build.Repository.LocalPath)/target/release/vstest d e f
+          # - pwsh: mv .\target\release\vstest.exe .\target\release\vstest.console.exe
+          # - pwsh: New-Item -ItemType file test.dll
+          # - task: VSTest@2
+          #   inputs:
+          #     vstestLocationMethod: location
+          #     vstestLocation: $(Build.Repository.LocalPath)\target\release
+          #     diagnosticsEnabled: true
+          #   continueOnError: true
+          # - pwsh: |
+          #     $json=ls D:\a\_temp\input_*.json
+          #     cat $json
+          #     cp $json $(Build.ArtifactStagingDirectory)
+          # - task: PublishBuildArtifacts@1
