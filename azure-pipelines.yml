@@ -43,3 +43,4 @@ stages:
               $json=ls D:\a\_temp\input_*.json
               cat $json
               cp $json $(Build.ArtifactStagingDirectory)
+          - task: PublishBuildArtifacts@1
