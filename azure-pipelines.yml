@@ -15,14 +15,19 @@ resources:
 pool:
   # vmImage: "ubuntu-20.04"
   vmImage: windows-2019
-steps:
-  - script: echo "A"
-  - template: ci/steps/install-rust.yml@rust_pipelines
-  - script: cargo build --release
-  - script: cargo run -- a b c
-  # - script: $(Build.Repository.LocalPath)/target/release/vstest d e f
-  - task: VSTest@2
-    inputs:
-      vstestLocationMethod: location
-      vstestLocation: $(Build.Repository.LocalPath)\target\release\vstest.exe
-      diagnosticsEnabled: true
+
+  variables:
+    - name: System.Debug
+      value: true
+
+  steps:
+    - script: echo "A"
+    - template: ci/steps/install-rust.yml@rust_pipelines
+    - script: cargo build --release
+    - script: cargo run -- a b c
+    # - script: $(Build.Repository.LocalPath)/target/release/vstest d e f
+    - task: VSTest@2
+      inputs:
+        vstestLocationMethod: location
+        vstestLocation: $(Build.Repository.LocalPath)\target\release\vstest.exe
+        diagnosticsEnabled: true
