@@ -26,7 +26,9 @@ stages:
             value: true
 
         steps:
-          - pwsh: "ls env:"
+          - pwsh: Get-Module -ListAvailable
+          - pwsh: Get-TfsClientCredentials
+          # - pwsh: "ls env:"
           # - template: ci/steps/install-rust.yml@rust_pipelines
           # - script: cargo build --release
           # - script: cargo run -- a b c
